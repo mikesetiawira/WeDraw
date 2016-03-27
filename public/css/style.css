@@ -1,0 +1,101 @@
+/* GENERAL */
+body {
+  background-color: #F7ECBF;
+  padding-top: 20px;
+}
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #B64926;
+}
+.content {
+  margin-top: 30px;
+}
+.header {
+  padding-top: 114px;
+}
+
+/* NAVBAR */
+.nav-justified {
+  border-top: 3px solid #468966;
+  border-bottom: 3px solid #468966;
+}
+.nav-justified > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+  font-size: 25px;
+  font-weight: bold;
+  color: #468966;
+  text-align: center;
+}
+.nav-justified > li > a:hover {
+  background-color: #F7ECBF;
+  color: #B64926;
+}
+
+/* LOG IN */
+.login-button {
+	text-align: right;
+}
+
+/* SLIDER*/
+.slider {
+  height: 500px;
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+.slider-caption {
+  z-index: 10;
+}
+.slider .item {
+  height: 500px;
+}
+.slider-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+/* REGISTER */
+.form-register {
+  max-width: 500px;
+  padding: 10px;
+  margin: 0 auto;
+}
+.form-register .form-register-heading,
+.form-register .checkbox {
+  margin-bottom: 25px;
+}
+.form-register .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-register input {
+  margin-bottom: 10px;
+}
+.form-register input[type="confirmPassword"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

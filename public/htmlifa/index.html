@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>We Draw!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">WE DRAW!</a>
+        </div>
+		
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="username" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="password" class="form-control">
+            </div>
+			<p>don't have any account? click here to <a href="register.html">register</a></p>
+			<div class="login-button">
+              <button type="submit" class="btn btn-default">Log in</button>
+			</div>
+          </form>
+        </div><!--/.navbar-collapse -->
+
+        <nav>
+          <ul class="nav nav-justified">
+            <li><a href="#">HOME</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="#">ROOMS</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </nav>
+	  
+		<div class="content">
+		  <h3>POPULAR THIS WEEK</h3>
+		  
+		  <div id="mySlider" class="slider slide" data-ride="slider">
+		    <ol class="slider-indicators">
+			  <li data-target="#mySlider" data-slide-to="0" class="active"></li>
+  			  <li data-target="#mySlider" data-slide-to="1"></li>
+			  <li data-target="#mySlider" data-slide-to="2"></li>
+		    </ol>
+		    <div class="slider-inner" role="listbox">
+		      <div class="item active">
+              
+			  </div>
+			  <div class="item">
+             
+			  </div>
+			  <div class="item">
+          
+			  </div>
+		    </div>
+		    <a class="left slider-control" href="#mySlider" role="button" data-slide="prev">
+		      <img src="http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/flipboard/arrow-prev.png">
+ 		    </a>
+		    <a class="right slider-control" href="#mySlider" role="button" data-slide="next">
+              <img src="http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/flipboard/arrow-next.png">
+		    </a>
+		  </div>
+		  
+		  <button type="button" class="btn btn-lg btn-default">Draw Now!</button>
+		</div>
+	  
+        <footer class="footer">
+          <p>&copy; PPL B02.</p>
+        </footer>
+      </div>
+	
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
