@@ -19,7 +19,7 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="{{ url('/home') }}">WE DRAW!</a>
         </div>
-        
+        @if (Request::url() !== url('/register'))
         @if (Auth::guest())
           <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right" method="POST" action="{{ url('/login') }}">
@@ -55,6 +55,13 @@
           <div class="user">
             <h2>Hi {{ Auth::user()->name }}!</h2>
             <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+          </div>
+        @endif
+
+        @else
+          <div id="navbar" class="navbar-collapse collapse">
+          </div>
+          <div class="user">
           </div>
         @endif
 
