@@ -16,6 +16,12 @@ body {
   padding-top: 114px;
 }
 
+.user {
+  text-align: right;
+  padding-top: 20px;
+  padding-bottom: 25px;
+}
+
 /* NAVBAR */
 .nav-justified {
   border-top: 3px solid #468966;
@@ -87,7 +93,6 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
 
 
 /* Responsive: Portrait tablets and up */
