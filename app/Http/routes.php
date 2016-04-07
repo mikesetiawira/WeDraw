@@ -46,6 +46,9 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/canvas', function () {
-        return view('canvas.canvas');
+        if(Auth::guest())
+            return view('home');
+        else
+            return view('canvas.canvas');
     });
 });

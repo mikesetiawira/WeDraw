@@ -17,7 +17,7 @@
   <body>
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="{{ url('/home') }}">WE DRAW!</a>
+          <a class="navbar-brand" href="{{ url('/home') }}"><h2>WE DRAW!</h2></a>
         </div>
         @if (Request::url() !== url('/register'))
         @if (Auth::guest())
@@ -53,8 +53,8 @@
 
         @else
           <div class="user">
-            <h2>Hi {{ Auth::user()->name }}!</h2>
-            <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+            <h3>Hi {{ Auth::user()->name }}</h3>
+            <a class="btn btn-default" type="button" href="{{ url('/logout') }}">Logout</a>
           </div>
         @endif
 

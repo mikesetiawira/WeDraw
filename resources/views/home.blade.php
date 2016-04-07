@@ -34,5 +34,12 @@
     </div>
  
     <a class="btn btn-lg btn-default" type="button" href="{{ url('/canvas') }}">Draw Now!</a>
+    @if(Auth::guest())
+
+        @if(Request::is('canvas'))
+            <br></br>
+            <div class="Textbox"><p>Harap Login terlebih dahulu<p></div>
+        @endif
+    @endif
 </div>
 @endsection
