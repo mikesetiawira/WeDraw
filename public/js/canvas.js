@@ -1,5 +1,6 @@
 //getting canvas on html
-context = document.getElementById('paint').getContext("2d");
+canvas = document.getElementById('paint')
+context = canvas.getContext("2d");
 
 //check if clicked or not
 $("canvas").mousedown(function(e){
@@ -23,7 +24,55 @@ $('canvas').mousemove(function(e){
 
 //if unclicked, leave paint
 $('canvas').mouseup(function(e){
-  paint = false;
+	if(curTool == "line" ) {
+		clickX.push(start_mouse.x);
+		clickY.push(start_mouse.y);
+		clickDrag.push(false);
+		shape.push("none");
+		clickColor.push(curColor);
+		clickSize.push(curSize);
+		
+		clickX.push(mouse.x);
+		clickY.push(mouse.y);
+		clickDrag.push(true);
+		shape.push("none");
+		clickColor.push(curColor);
+		clickSize.push(curSize);
+	}
+	
+	if(curTool == "rectangle" ) {
+		clickX.push(start_mouse.x);
+		clickY.push(start_mouse.y);
+		clickDrag.push(false);
+		shape.push("none");
+		clickColor.push(curColor);
+		clickSize.push(curSize);
+		
+		clickX.push(mouse.x);
+		clickY.push(mouse.y);
+		clickDrag.push(true);
+		shape.push("rectangle");
+		clickColor.push(curColor);
+		clickSize.push(curSize);
+		
+	}
+	
+	if(curTool == "ellipse") {
+		clickX.push(start_mouse.x);
+		clickY.push(start_mouse.y);
+		clickDrag.push(false);
+		shape.push("none");
+		clickColor.push(curColor);
+		clickSize.push(curSize);
+		
+		clickX.push(mouse.x);
+		clickY.push(mouse.y);
+		clickDrag.push(true);
+		shape.push("ellipse");
+		clickColor.push(curColor);
+		clickSize.push(curSize);
+	}
+	paint = false;
 });
 
 //if cursor leave the html, leave paint
@@ -35,7 +84,12 @@ $('canvas').mouseleave(function(e){
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
+var shape = new Array();
 var paint;
+
+var mouse = {x: 0, y: 0};
+var start_mouse = {x: 0, y: 0};
+
 
 var curColor = "#AB2567";
 var clickColor = new Array();
@@ -45,6 +99,9 @@ var curSize = normal;
 var normal = 5;
 var large = 10
 var huge = 15;
+
+var envi = "none";
+
 
 var clickTool = new Array();
 var curTool = "Draw"
@@ -62,6 +119,15 @@ $(document).ready(function(){
 		curColor = "#"+this.value;	
 	});
 	
+	$('#height').change(function() { 
+		canvas.height = parseInt(this.value);
+		redraw();
+	}) ;
+	
+	$('#width').change(function() { 
+		canvas.width = parseInt(this.value);
+		redraw();
+	}) ;
 	
 	$('#size').bind('input', function() { 
 		curSize = this.value;
@@ -90,16 +156,30 @@ $(document).ready(function(){
 		case 'B':
 			curTool = "marker";
 			break;
-		case 'C':
-			curTool = "crayon";
+		case 'AA':
+			envi = "clean";
+			break;
+		case 'BB':
+			envi = "crayon";
+			break;
+		case 'M':
+			curTool = "line";
+			break;
+		case 'N':
+			curTool = "ellipse";
+			break;
+		case 'O':
+			curTool = "rectangle";
 			break;
 		case 'clear':
+			curTool = "marker";
 			clickX = new Array();
 			clickY = new Array();
 			clickDrag = new Array();
 			clickColor = new Array();
 			clickSize = new Array();
 			clickTool = new Array();
+			shape = new Array();
 			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 			break;
 		}
@@ -108,15 +188,27 @@ $(document).ready(function(){
 
 function addClick(x, y, dragging)
 {
-  clickX.push(x);
-  clickY.push(y);
-  clickDrag.push(dragging);
-  if(curTool == "eraser") {
-	clickColor.push("#FFFFFF");
-  } else {
-	clickColor.push(curColor);
-  }
-  clickSize.push(curSize);
+	if(curTool != "line" && curTool != "rectangle"&& curTool != "ellipse") {
+		shape.push("none");
+		clickX.push(x);
+		clickY.push(y);
+		clickDrag.push(dragging);
+		if(curTool == "eraser") {
+			clickColor.push("#FFFFFF");
+		} else {
+			clickColor.push(curColor);
+		}
+		clickSize.push(curSize);
+	}
+	else {
+		if(!dragging) {
+			start_mouse.x = x;
+			start_mouse.y = y;
+		}
+		mouse.x = x;
+		mouse.y = y;
+	}
+	
 }
 
 //Draw the canvas
@@ -132,15 +224,107 @@ function redraw(){
     if(clickDrag[i] && i){
       context.moveTo(clickX[i-1], clickY[i-1]);
      }else{
-       context.moveTo(clickX[i]-1, clickY[i]);
-     }
-     context.lineTo(clickX[i], clickY[i]);
-     context.closePath();
-	 context.strokeStyle = clickColor[i];
-	 context.lineWidth = clickSize[i];
-     context.stroke();
+       context.moveTo(clickX[i], clickY[i]);
+    }
+	 
+	if(shape[i] == "rectangle") {
+		var x = Math.min(clickX[i-1], clickX[i]);
+		var y = Math.min(clickY[i-1], clickY[i]);
+		var width = Math.abs(clickX[i-1] - clickX[i]);
+		var height = Math.abs(clickY[i-1] - clickY[i]);
+		context.strokeStyle = curColor;
+		context.lineWidth = curSize;
+		context.strokeRect(x, y, width, height);
+	}
+	
+	else if(shape[i] == "ellipse") {
+		var x = Math.min(clickX[i-1], clickX[i]);
+		var y = Math.min(clickY[i-1], clickY[i]);
+		
+		var w = Math.abs(clickX[i-1] - clickX[i]);
+		var h = Math.abs(clickY[i-1] - clickY[i]);
+		
+		var kappa = .5522848,
+		ox = (w / 2) * kappa, // control point offset horizontal
+		oy = (h / 2) * kappa, // control point offset vertical
+		xe = x + w,           // x-end
+		ye = y + h,           // y-end
+		xm = x + w / 2,       // x-middle
+		ym = y + h / 2;       // y-middle
+		
+		context.beginPath();
+		context.moveTo(x, ym);
+		context.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+		context.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+		context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+		context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+		context.closePath();
+		context.strokeStyle = clickColor[i];
+		context.lineWidth = clickSize[i];
+		context.stroke();
+	}
+	else {
+		context.lineTo(clickX[i], clickY[i]);
+		context.closePath();
+		context.strokeStyle = clickColor[i];
+		context.lineWidth = clickSize[i];
+		context.stroke();
+	}
+
   }
-   if(curTool == "crayon") {
+  
+	if(curTool == "line") {
+		context.beginPath();
+		context.moveTo(start_mouse.x, start_mouse.y);
+		context.lineTo(mouse.x, mouse.y);
+		context.closePath();
+		context.strokeStyle = curColor;
+		context.lineWidth = curSize;
+		context.stroke();
+		
+	}
+	
+	if(curTool == "rectangle") {
+		var x = Math.min(mouse.x, start_mouse.x);
+		var y = Math.min(mouse.y, start_mouse.y);
+		var width = Math.abs(mouse.x - start_mouse.x);
+		var height = Math.abs(mouse.y - start_mouse.y);
+		context.strokeStyle = curColor;
+		context.lineWidth = curSize;
+		context.strokeRect(x, y, width, height);
+	}
+	
+	if(curTool == "ellipse") {
+		var x = Math.min(mouse.x, start_mouse.x);
+		var y = Math.min(mouse.y, start_mouse.y);
+		
+		var w = Math.abs(mouse.x - start_mouse.x);
+		var h = Math.abs(mouse.y - start_mouse.y);
+		
+		var kappa = .5522848,
+		ox = (w / 2) * kappa, // control point offset horizontal
+		oy = (h / 2) * kappa, // control point offset vertical
+		xe = x + w,           // x-end
+		ye = y + h,           // y-end
+		xm = x + w / 2,       // x-middle
+		ym = y + h / 2;       // y-middle
+		
+		context.beginPath();
+		context.strokeStyle = curColor;
+		context.lineWidth = curSize;
+		context.moveTo(x, ym);
+		context.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+		context.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+		context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+		context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+
+		context.closePath();
+		context.stroke();
+		
+	}
+	
+
+	if(envi == "crayon") {
     context.globalAlpha = 0.4;
 	var img = document.getElementById("crayons");
     context.drawImage(img, 0, 0, context.canvas.width, context.canvas.height);

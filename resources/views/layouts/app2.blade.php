@@ -43,7 +43,7 @@
                   @endif
               </div>
 
-              <p>don't have any account? click here to <a href="{{ url('/register') }}">register</a></p>
+              <p>Masih belum punya akun? <a href="{{ url('/register') }}">Daftar lah!!!</a></p>
               <div class="login-button">
                 <button type="submit" class="btn btn-default">Log in</button>
               </div>

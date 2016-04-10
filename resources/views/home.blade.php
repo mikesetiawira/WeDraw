@@ -6,7 +6,17 @@
 
 @section('content')
 <div class="content">
-    <h3>POPULAR THIS WEEK</h3>
+    @if(Auth::guest())
+
+        @if(Request::is('canvas'))
+            <h3>POPULAR THIS WEEK</h3>
+            <div class="Textbox">Login dulu, baru We Draw!</div>
+        @else
+            <h3>POPULAR THIS WEEK</h3>
+        @endif
+    @else
+        <h3>POPULAR THIS WEEK</h3>
+    @endif
   
     <div id="mySlider" class="slider slide" data-ride="slider">
         <ol class="slider-indicators">
@@ -34,12 +44,6 @@
     </div>
  
     <a class="btn btn-lg btn-default" type="button" href="{{ url('/canvas') }}">Draw Now!</a>
-    @if(Auth::guest())
 
-        @if(Request::is('canvas'))
-            <br></br>
-            <div class="Textbox"><p>Harap Login terlebih dahulu<p></div>
-        @endif
-    @endif
 </div>
 @endsection
