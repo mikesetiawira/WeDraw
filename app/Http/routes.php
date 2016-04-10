@@ -45,6 +45,14 @@ Route::group(['middleware' => 'web'], function () {
         return view('gallery');
     });
 
+    Route::get('/rooms', function () {
+        return view('rooms');
+    });
+
+    Route::get('/faq', function () {
+        return view('faq');
+    });
+
     Route::get('/canvas', function () {
         if(Auth::guest())
             return view('home');
@@ -55,6 +63,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/login', function () {
         return view('home');
     });
-    
+
 
 });

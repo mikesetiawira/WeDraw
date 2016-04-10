@@ -69,8 +69,8 @@
           <ul class="nav nav-justified">
             <li><a href="{{ url('/home') }}">HOME</a></li>
             <li><a href="{{ url('/gallery') }}">GALLERY</a></li>
-            <li><a href="#">ROOMS</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="{{ url('/rooms') }}">ROOMS</a></li>
+            <li><a href="{{ url('/faq') }}">FAQ</a></li>
           </ul>
         </nav>
       
