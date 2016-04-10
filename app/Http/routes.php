@@ -51,4 +51,10 @@ Route::group(['middleware' => 'web'], function () {
         else
             return view('canvas.canvas');
     });
+
+    Route::get('/login', function () {
+        return view('home');
+    });
+    
+
 });
