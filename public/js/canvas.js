@@ -232,8 +232,8 @@ function redraw(){
 		var y = Math.min(clickY[i-1], clickY[i]);
 		var width = Math.abs(clickX[i-1] - clickX[i]);
 		var height = Math.abs(clickY[i-1] - clickY[i]);
-		context.strokeStyle = curColor;
-		context.lineWidth = curSize;
+		context.strokeStyle = clickColor[i];
+		context.lineWidth = clickSize[i];
 		context.strokeRect(x, y, width, height);
 	}
 	
