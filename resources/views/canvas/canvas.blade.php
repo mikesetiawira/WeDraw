@@ -10,7 +10,7 @@
         
     <p>
     Canvas Size :
-    <input id="height" value="220"> x <input id="width" value="490"> 
+    <input id="width" value="800"> x <input id="height" value="480">
     </p>
 
     <p>
@@ -47,13 +47,11 @@
     <button id="clear">Clear</button><br/><br/>
 
     <div id="sketch">
-       <canvas id="paint" width="490" height="220" style="border:1px solid #787272;"></canvas>
+       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
     </div>
 
     <script src="js/jquery-1.12.2.min.js"></script>
     <script src ="js/canvas.js"> </script>
     <script src="js/jscolor.js"></script>
-    <script src="js/jscolor.min.js"></script>
-    <script src="js/shape.js"></script>
 </div>
 @endsection
