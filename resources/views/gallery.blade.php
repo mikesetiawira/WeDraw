@@ -6,6 +6,6 @@
 
 @section('content')
 <div class="content">
-    <h3>INI GALLERY</h3>
+    <h3>GALLERY</h3>
 </div>
 @endsection

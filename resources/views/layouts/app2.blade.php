@@ -10,6 +10,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   </head>
 
@@ -18,6 +19,7 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="{{ url('/home') }}"><h2>WE DRAW!</h2></a>
         </div>
+
         @if (Request::url() !== url('/register'))
         @if (Auth::guest())
           <div id="navbar" class="navbar-collapse collapse">
@@ -25,34 +27,37 @@
                {!! csrf_field() !!}
 
               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                @if ($errors->has('email'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                  </span>
+                @elseif ($errors->has('password'))  
+                  <span class="help-error"></span>
+                @endif
                 <input type="email" placeholder="email" class="form-control" name="email" value="{{ old('email') }}">
-                 @if ($errors->has('email'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('email') }}</strong>
-                      </span>
-                  @endif
               </div>
 
               <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input type="password" placeholder="password" class="form-control" name="password">
                 @if ($errors->has('password'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('password') }}</strong>
-                      </span>
-                  @endif
+                  <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+                @elseif ($errors->has('email'))  
+                  <span class="help-error"></span>
+                @endif
+                <input type="password" placeholder="password" class="form-control" name="password">
               </div>
 
-              <p>Masih belum punya akun? <a href="{{ url('/register') }}">Daftar lah!!!</a></p>
+              <p>don't have any account? click here to <a href="{{ url('/register') }}">register</a></p>
               <div class="login-button">
                 <button type="submit" class="btn btn-default">Log in</button>
               </div>
             </form>
           </div><!--/.navbar-collapse -->
-      </form>
 
         @else
           <div class="user">
-            <h3>Hi {{ Auth::user()->name }}</h3>
+            <h3>Hi, {{ Auth::user()->name }}!</h3>
             <a class="btn btn-default" type="button" href="{{ url('/logout') }}">Logout</a>
           </div>
         @endif
@@ -85,5 +90,32 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+    $('.launch-modal').on('click', function(e){
+    e.preventDefault();
+    $( '#' + $(this).data('modal-id') ).modal();
+  });
+    
+    /*
+        Form validation
+    */
+  $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
+      $(this).removeClass('input-error');
+    });
+    
+    $('.login-form').on('submit', function(e) {
+      
+      $(this).find('input[type="text"], input[type="password"], textarea').each(function(){
+        if( $(this).val() == "" ) {
+          e.preventDefault();
+          $(this).addClass('input-error');
+        }
+        else {
+          $(this).removeClass('input-error');
+        }
+      });
+      
+    });
+    </script>
   </body>
 </html>
