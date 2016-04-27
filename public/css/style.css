@@ -121,18 +121,20 @@ input {
 
 #width, #height, #size {
   width: 50px;
+  text-align: center;
 }
 
 td {
   padding: 5px;
 }
 .btn-tools {
-  background-color: #00B1E8;
-  color: #FBF845;
+  background-color: #B64926;
+  color: #F7ECBF;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: none;
 }
+
 .new-room {
   text-align: right;
 }
