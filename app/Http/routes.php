@@ -26,10 +26,6 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
@@ -53,15 +49,14 @@ Route::group(['middleware' => 'web'], function () {
         return view('faq');
     });
 
-    Route::get('/canvas', function () {
-        if(Auth::guest())
-            return view('home');
-        else
-            return view('canvas.canvas');
-    });
-
     Route::get('/login', function () {
         return view('home');
+    });
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/canvas', function () {
+            return view('canvas.canvas');
+        });
     });
 
 

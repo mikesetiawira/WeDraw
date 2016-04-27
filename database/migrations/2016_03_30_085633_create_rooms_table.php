@@ -14,11 +14,11 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('owner_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->timestamps();
             
-            $table->foreign('owner_id')
+            $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
