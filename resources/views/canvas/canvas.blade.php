@@ -11,22 +11,30 @@
   <table>
     <tr>
       <td>Canvas size :  </td>
-      <td><input id="width" value="800"> x <input id="height" value="480"> px</td>
+      <td><input id="width" value="800"> x <input id="height" value="600"> px</td>
+      <td></td>
+      <td></td>
+      <td>Size :  </td>
+      <td>
+        <input id="size" value="10"> px
+        &nbsp;
+        &nbsp;
+        <button id="a" class="btn-tools">Normal</button>
+        &nbsp;
+        <button id="b" class="btn-tools">Large</button>
+        &nbsp;
+        <button id="c" class="btn-tools">Huge</button>
+      </td>
     </tr>
     <tr>
       <td>Color :  </td>
       <td><input id="color" class="jscolor" value="ab2567"></td>
-    </tr>
-    <tr>
-      <td>Size :  </td>
-      <td><input id="size" value="10"></td>
-    </tr>
-    <tr>
       <td></td>
+      <td></td>
+      <td>Tools :  </td>
       <td>
-        <button id="a" class="btn-tools">Normal</button> 
-        <button id="b" class="btn-tools">Large</button> 
-        <button id="c" class="btn-tools">Huge</button>
+        <button id="A" class="btn-tools">Eraser</button> 
+        <button id="B" class="btn-tools">Marker</button>
       </td>
     </tr>
     <tr>
@@ -35,15 +43,8 @@
         <button id="AA" class="btn-tools">Clean</button> 
         <button id="BB" class="btn-tools">Crayon</button>
       </td>
-    </tr>
-    <tr>
-      <td>Tools :  </td>
-      <td>
-        <button id="A" class="btn-tools">Eraser</button> 
-        <button id="B" class="btn-tools">Marker</button>
-      </td>
-    </tr>
-    <tr>
+      <td></td>
+      <td></td>
       <td>Shapes :  </td>
       <td>
         <button id="M" class="btn-tools">Line</button>
@@ -51,50 +52,20 @@
         <button id="N" class="btn-tools">Ellipse</button>
       </td>
     </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <button id="clear" class="btn-tools">Clear</button>
+      </td>
+    </tr>
   </table>
-  <div class="col-md-6 col-md-offset-3">
-    <p>
-    Canvas Size :
-    <input id="width" value="800"> x <input id="height" value="480"> px
-    </p>
 
-    <p>
-    Color: <input id="color" class="jscolor" value="ab2567">
-    </p>
-
-    <p>
-    Size    :   
-    <input id="size" value="10"> 
-    <button id="a">Normal</button> 
-    <button id="b">Large</button> 
-    <button id="c">Huge</button>
-    </p>
-
-    <p>
-    Environment :
-    <button id="AA">Clean</button> 
-    <button id="BB">Crayon</button> 
-    </p>
-
-    <p>
-    Tools   :
-    <button id="A">Eraser</button> 
-    <button id="B">Marker</button> 
-    </p>
-
-    <p>
-    Shapes :
-    <button id="M">Line</button>
-    <button id="O">Square</button>
-    <button id="N">Ellipse</button>
-    </p>
-
-    <button id="clear">Clear</button><br><br>
+  <div class="sketch" oncontextmenu="return false">
+     <canvas id="paint" width="800" height="600" style="border:1px solid #787272;"></canvas>
   </div>
-
-    <div class="sketch">
-       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
-    </div>
 
   <script src="js/jquery-1.12.2.min.js"></script>
   <script src ="js/canvas.js"> </script>
