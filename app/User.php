@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function ownedRooms()
+    public function rooms()
     {
         return $this->hasMany('App\Room');
     }
