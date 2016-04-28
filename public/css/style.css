@@ -182,9 +182,3 @@ a:active {
 canvas {
   background-color: white;
 }
-
-.divider{
-    width:5px;
-    height:auto;
-    display:inline-block;
-}
