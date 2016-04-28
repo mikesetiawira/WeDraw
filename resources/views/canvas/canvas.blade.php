@@ -7,7 +7,7 @@
 @section('content')
 <div class="content">
   <img id="crayons" src="crayontexture.png" hidden> 
-        
+  <div class="col-md-6 col-md-offset-3"> 
   <table>
     <tr>
       <td>Canvas size :  </td>
@@ -51,50 +51,16 @@
         <button id="N" class="btn-tools">Ellipse</button>
       </td>
     </tr>
+    <tr>
+      <td></td>
+      <td><button id="clear" class="btn-clear">Clear</button></td>
+    </tr>
   </table>
-  <div class="col-md-6 col-md-offset-3">
-    <p>
-    Canvas Size :
-    <input id="width" value="800"> x <input id="height" value="480"> px
-    </p>
-
-    <p>
-    Color: <input id="color" class="jscolor" value="ab2567">
-    </p>
-
-    <p>
-    Size    :   
-    <input id="size" value="10"> 
-    <button id="a">Normal</button> 
-    <button id="b">Large</button> 
-    <button id="c">Huge</button>
-    </p>
-
-    <p>
-    Environment :
-    <button id="AA">Clean</button> 
-    <button id="BB">Crayon</button> 
-    </p>
-
-    <p>
-    Tools   :
-    <button id="A">Eraser</button> 
-    <button id="B">Marker</button> 
-    </p>
-
-    <p>
-    Shapes :
-    <button id="M">Line</button>
-    <button id="O">Square</button>
-    <button id="N">Ellipse</button>
-    </p>
-
-    <button id="clear">Clear</button><br><br>
   </div>
-
-    <div class="sketch">
-       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
-    </div>
+    
+  <div class="sketch">
+    <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
+  </div>
 
   <script src="js/jquery-1.12.2.min.js"></script>
   <script src ="js/canvas.js"> </script>
