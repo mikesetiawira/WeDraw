@@ -58,7 +58,7 @@
   </table>
   </div>
     
-  <div class="sketch">
+  <div class="sketch" oncontextmenu="return false">
     <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
   </div>
 
