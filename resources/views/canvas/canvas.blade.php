@@ -29,11 +29,11 @@
       
       <td>Environment :  </td>
       <td class="val">
-        <button id="AA" class="btn-tools">Clean</button> 
-        <button id="BB" class="btn-tools">Crayon</button>
+        <button id="AA" class="btn-tools"><img src="{{ URL::asset('image/clean.png') }}" title="Clean"></button> 
+        <button id="BB" class="btn-tools"><img src="{{ URL::asset('image/crayon.png') }}" title="Crayon"></button>
       </td>
 
-      <td><button id="clear" class="btn-clear">Clear</button></td>
+      <td><button id="clear" class="btn-clear"><img src="{{ URL::asset('image/clear.png') }}" title="Clear"></button></td>
     </tr>
     <tr>
       <td>Size :  </td>
@@ -41,43 +41,41 @@
 
       <td>Tools :  </td>
       <td class="val">
-        <button id="A" class="btn-tools">Eraser</button> 
-        <button id="B" class="btn-tools">Marker</button>
+        <button id="A" class="btn-tools"><img src="{{ URL::asset('image/eraser.png') }}" title="Eraser"></button> 
+        <button id="B" class="btn-tools"><img src="{{ URL::asset('image/marker.png') }}" title="Marker"></button>
       </td>
     </tr>
     <tr>
       <td></td>
       <td class="val">
-        <button id="a" class="btn-tools">Normal</button> 
-        <button id="b" class="btn-tools">Large</button> 
-        <button id="c" class="btn-tools">Huge</button>
+        <button id="a" class="btn-tools"><img src="{{ URL::asset('image/font.png') }}" title="Normal" id="normal"></button>
+        <button id="b" class="btn-tools"><img src="{{ URL::asset('image/font.png') }}" title="Large" id="large"></button>
+        <button id="c" class="btn-tools"><img src="{{ URL::asset('image/font.png') }}" title="Huge" id="huge"></button>
       </td>
 
       <td>Shapes :  </td>
       <td class="val">
-        <button id="M" class="btn-tools">Line</button>
-        <button id="O" class="btn-tools">Square</button>
-        <button id="N" class="btn-tools">Ellipse</button>
+        <button id="M" class="btn-tools"><img src="{{ URL::asset('image/line.png') }}" title="Line"></button>
+        <button id="O" class="btn-tools"><img src="{{ URL::asset('image/square.png') }}" title="Square"></button>
+        <button id="N" class="btn-tools"><img src="{{ URL::asset('image/round.png') }}" title="Ellipse"></button>
       </td>
     </tr>
-<<<<<<< HEAD
+
   </table>
 
-    <div class="sketch">
-       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
-    </div>
+ 
 
 
   <script src="{{ URL::asset('js/jquery-1.12.2.min.js') }}"></script>
   <script src ="{{ URL::asset('js/canvas.js') }}"> </script>
   <script src="{{ URL::asset('js/jscolor.js') }}"></script>
-=======
+
     </table>
   </div>
 
   <script src="js/jquery-1.12.2.min.js"></script>
   <script src ="js/canvas.js"> </script>
   <script src="js/jscolor.js"></script>
->>>>>>> b6689e58fad135485c9b37a1f0fbd0b145f6764b
+
 </div>
 @endsection

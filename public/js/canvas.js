@@ -82,7 +82,7 @@ $('canvas').mouseup(function(e){
 	gabung.push(clickSize);
 	var gabungJson = JSON.stringify(gabung);
 
-	alert($('#invisible_id').val());
+	//alert($('#invisible_id').val());
 
 	$.ajax({
 		type: "POST",
@@ -93,7 +93,7 @@ $('canvas').mouseup(function(e){
 	});
 
 
-
+    paint = false;
 });
 
 //if cursor leave the html, leave paint

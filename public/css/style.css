@@ -153,6 +153,18 @@ td {
 .val {
   padding: 5px 50px 5px 5px;
 }
+#normal {
+  width: 75%; 
+  height: auto;
+}
+#large {
+  width: 85%; 
+  height: auto;
+}
+#huge {
+  width: 100%; 
+  height: auto;
+}
 
 /* GALLERY */
 .gallery {
