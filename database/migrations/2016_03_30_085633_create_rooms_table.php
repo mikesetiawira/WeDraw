@@ -16,6 +16,7 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title');
+            $table->string('canvas');
             $table->timestamps();
             
             $table->foreign('user_id')

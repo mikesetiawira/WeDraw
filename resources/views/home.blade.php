@@ -90,4 +90,11 @@
       </div>
     </div>
 </div>
+
+
+
+<form class="form-register" method="POST" action="{{ url('/room') }}">
+  {{ csrf_field() }}
+  <button type="submit">Submit</button>
+</form>
 @endsection

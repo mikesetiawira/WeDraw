@@ -12,7 +12,7 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'title'
+        'title', 'canvas'
     ];
 
     /**

@@ -72,7 +72,28 @@ $('canvas').mouseup(function(e){
 		clickColor.push(curColor);
 		clickSize.push(curSize);
 	}
-	paint = false;
+	
+	var gabung = new Array();
+	gabung.push(clickX);
+	gabung.push(clickY);
+	gabung.push(clickDrag);
+	gabung.push(shape);
+	gabung.push(clickColor);
+	gabung.push(clickSize);
+	var gabungJson = JSON.stringify(gabung);
+
+	alert($('#invisible_id').val());
+
+	$.ajax({
+		type: "POST",
+		url: "/storeCanvas.php?id=" + $('#invisible_id').val(),
+		data: gabungJson,
+		dataType: "json",
+		success: function(data){alert(data);}
+	});
+
+
+
 });
 
 //if cursor leave the html, leave paint
@@ -95,8 +116,8 @@ var curColor = "#AB2567";
 var clickColor = new Array();
 
 var clickSize = new Array();
-var curSize = normal;
 var normal = 5;
+var curSize = normal;
 var large = 10
 var huge = 15;
 

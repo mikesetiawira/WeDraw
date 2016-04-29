@@ -29,28 +29,29 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/', function () {
+    Route::get('/{etc}', function () {
         return view('home');
-    });
-
-    Route::get('/home', function () {
-        return view('home');
-    });
+    })
+    ->name('home')
+    ->where('etc', '(home|login)?');
 
     Route::get('/gallery', function () {
         return view('gallery');
-    });
+    })
+    ->name('gallery');
 
     Route::get('/rooms', function () {
         return view('rooms');
     });
 
+    Route::get('/room/{id}', 'RoomController@view')
+    ->name('room')
+    ->where('id', '[0-9]+');
+
+    Route::post('/room', 'RoomController@store');
+
     Route::get('/faq', function () {
         return view('faq');
-    });
-
-    Route::get('/login', function () {
-        return view('home');
     });
 
     Route::group(['middleware' => 'auth'], function () {
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'web'], function () {
             return view('canvas.canvas');
         });
     });
+
 
 
 });
