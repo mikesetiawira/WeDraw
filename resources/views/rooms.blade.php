@@ -15,12 +15,7 @@
       @else
         <a class="btn btn-lg btn-default" type="button" href="{{ url('/canvas') }}">Create New Rooms!</a>
       @endif
-	</div>
-
-
-
-
-
+	  </div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -30,6 +25,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Please Log in first</h4>
           </div>
+          
           <div class="modal-body">
             <form class="form-register" method="POST" action="{{ url('/login') }}">
             {!! csrf_field() !!}
@@ -66,6 +62,58 @@
         </div>
       </div>
     </div>
+    <!--END MODAL-->
+
+    <div class="gallery">
+    <table>
+      <tr>
+        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+      </tr>
+
+      <tr>
+        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+      </tr>
+
+      <tr class="owner">
+        <td>Image Owner</td>
+        <td>Image Owner</td>
+        <td>Image Owner</td>
+      </tr>
+
+
+      <tr>
+        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+      </tr>
+
+      <tr>
+        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+      </tr>
+
+      <tr class="owner">
+        <td>Image Owner</td>
+        <td>Image Owner</td>
+        <td>Image Owner</td>
+      </tr>
+    </table>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
 
 </div>
+
 @endsection

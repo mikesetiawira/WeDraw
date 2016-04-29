@@ -214,7 +214,7 @@ function addClick(x, y, dragging)
 		clickX.push(x);
 		clickY.push(y);
 		clickDrag.push(dragging);
-		if(curTool == "eraser") {
+		if(curTool == "eraser" || event.button == 2) {
 			clickColor.push("#FFFFFF");
 		} else {
 			clickColor.push(curColor);
