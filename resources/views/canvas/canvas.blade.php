@@ -8,6 +8,9 @@
 <div class="content">
   {{-- Form::hidden('id', $room->id, ['id' => 'invisible_id']) --}}
   {{-- Form::hidden('canvas', $room->canvas, ['id' => 'invisible_canvas']) --}}
+  <meta name="room_id" content="{{ $room->id }}" />
+  <meta name="room_canvas" content="{{ $room->canvas }}" />
+  <meta name="_token" content="{{ csrf_token() }}" />
   <input id="invisible_id" name="id" type="hidden" value="{{ $room->id }}">
   <input id="invisible_canvas" name="canvas" type="hidden" value="{{ $room->canvas }}">
   <img id="crayons" src="crayontexture.png" hidden> 
@@ -60,24 +63,12 @@
         <button id="N" class="btn-tools">Ellipse</button>
       </td>
     </tr>
-<<<<<<< HEAD
   </table>
 
-    <div class="sketch">
-       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;"></canvas>
-    </div>
 
 
   <script src="{{ URL::asset('js/jquery-1.12.2.min.js') }}"></script>
   <script src ="{{ URL::asset('js/canvas.js') }}"> </script>
   <script src="{{ URL::asset('js/jscolor.js') }}"></script>
-=======
-    </table>
-  </div>
-
-  <script src="js/jquery-1.12.2.min.js"></script>
-  <script src ="js/canvas.js"> </script>
-  <script src="js/jscolor.js"></script>
->>>>>>> b6689e58fad135485c9b37a1f0fbd0b145f6764b
 </div>
 @endsection

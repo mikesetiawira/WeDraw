@@ -19,7 +19,7 @@ class RoomController extends Controller
 
         $room = $request->user()->rooms()->create([
             'title' => '',
-            'canvas' => '[]'
+            'json' => '{"x":[], "y":[], "drag":[], "shape":[], "color":[], "size":[]}'
         ]);
 
         return redirect()->route('room', [$room]);

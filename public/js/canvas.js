@@ -24,6 +24,7 @@ $('canvas').mousemove(function(e){
 
 //if unclicked, leave paint
 $('canvas').mouseup(function(e){
+	loadCanvas();
 	if(curTool == "line" ) {
 		clickX.push(start_mouse.x);
 		clickY.push(start_mouse.y);
@@ -72,28 +73,9 @@ $('canvas').mouseup(function(e){
 		clickColor.push(curColor);
 		clickSize.push(curSize);
 	}
-	
-	var gabung = new Array();
-	gabung.push(clickX);
-	gabung.push(clickY);
-	gabung.push(clickDrag);
-	gabung.push(shape);
-	gabung.push(clickColor);
-	gabung.push(clickSize);
-	var gabungJson = JSON.stringify(gabung);
+	paint = false;
 
-	alert($('#invisible_id').val());
-
-	$.ajax({
-		type: "POST",
-		url: "/storeCanvas.php?id=" + $('#invisible_id').val(),
-		data: gabungJson,
-		dataType: "json",
-		success: function(data){alert(data);}
-	});
-
-
-
+	storeCanvas();
 });
 
 //if cursor leave the html, leave paint
@@ -116,8 +98,8 @@ var curColor = "#AB2567";
 var clickColor = new Array();
 
 var clickSize = new Array();
-var normal = 5;
 var curSize = normal;
+var normal = 5;
 var large = 10
 var huge = 15;
 
@@ -126,6 +108,8 @@ var envi = "none";
 
 var clickTool = new Array();
 var curTool = "Draw"
+
+var id;
 
 $("#input").on("input",function(e){
  if($(this).data("lastval")!= $(this).val()){
@@ -205,6 +189,13 @@ $(document).ready(function(){
 			break;
 		}
     });
+
+    $.ajaxSetup({
+	   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+	});
+	id = $('meta[name=room_id]').attr('content');
+	loadCanvas();
+	redraw();
 });
 
 function addClick(x, y, dragging)
@@ -214,7 +205,7 @@ function addClick(x, y, dragging)
 		clickX.push(x);
 		clickY.push(y);
 		clickDrag.push(dragging);
-		if(curTool == "eraser" || event.button == 2) {
+		if(curTool == "eraser") {
 			clickColor.push("#FFFFFF");
 		} else {
 			clickColor.push(curColor);
@@ -352,3 +343,46 @@ function redraw(){
   }
   context.globalAlpha = 1;
 }
+
+
+function loadCanvas() {
+	$.ajax({
+		url: id + '/load',
+		type: 'get',
+		async: false,
+		success: function(data) {
+			var obj = JSON.parse(data);
+			clickX = obj.x;
+			clickY = obj.y;
+			clickDrag = obj.drag;
+			shape = obj.shape;
+			clickColor = obj.color;
+			clickSize = obj.size;
+		}
+	});
+}
+
+function storeCanvas() {
+	var json = JSON.stringify({
+		x: clickX,
+		y: clickY,
+		drag: clickDrag,
+		shape: shape,
+		color: clickColor,
+		size: clickSize
+	});
+	
+	$.ajax({
+      url: id + '/store',
+      type: 'put',
+      data: {json: json},
+      error: function() {
+      	alert("Store error");
+      },
+    });
+}
+
+setInterval(function () {
+	loadCanvas();
+	redraw();
+}, 3000);

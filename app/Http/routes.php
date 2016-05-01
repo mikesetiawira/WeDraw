@@ -25,8 +25,10 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+use Illuminate\Support\Facades\Input;
 
 Route::group(['middleware' => 'web'], function () {
+
     Route::auth();
 
     Route::get('/{etc}', function () {
@@ -34,6 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     })
     ->name('home')
     ->where('etc', '(home|login)?');
+    
 
     Route::get('/gallery', function () {
         return view('gallery');
@@ -43,10 +46,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/rooms', function () {
         return view('rooms');
     });
-
-    Route::get('/room/{id}', 'RoomController@view')
-    ->name('room')
-    ->where('id', '[0-9]+');
 
     Route::post('/room', 'RoomController@store');
 
@@ -58,8 +57,41 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/canvas', function () {
             return view('canvas.canvas');
         });
+
+        Route::get('/room/{id}', 'RoomController@view')
+        ->name('room')
+        ->where('id', '[0-9]+');
     });
 
+    Route::post('room/{id}/updateCanvas', function (Request $request, $id) {
+        $room = App\Room::findOrFail($id);
+        $room->canvas = $request->json;
+        $room->canvas = "herp";
+        $room->save();
+
+        return "yey";
+    });
+
+    Route::get('room/{id}/load', function ($id) {
+        if(Request::ajax()) {
+            return App\Room::findOrFail($id)->json;
+        }
+    });
+
+    Route::put('room/{id}/store', function ($id) {
+        if(Request::ajax()) {
+            App\Room::findOrFail($id)->update(['json' => Input::get('json')]);
+            return Input::get('json');
+        }
+    });
+
+    Route::post('test', function (Request $request) {
+        return 0;
+    });
+
+    Route::get('room/test', function (Request $request) {
+        return 0;
+    });
 
 
 });
