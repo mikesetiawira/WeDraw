@@ -49,42 +49,12 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Please Log in first</h4>
-          </div>
           <div class="modal-body">
-            <form class="form-register" method="POST" action="{{ url('/login') }}">
-            {!! csrf_field() !!}
+            <h4>Please Log In First!</h4>
+          </div>
 
-              <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                @if ($errors->has('email'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-                @elseif ($errors->has('password'))  
-                  <span class="help-error"></span>
-                @endif
-                <input type="email" placeholder="email" class="form-control" name="email" value="{{ old('email') }}">
-              </div>
- 
-              <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                @if ($errors->has('password'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
-                  </span>
-                @elseif ($errors->has('email'))  
-                  <span class="help-error"></span>
-                @endif
-                <input type="password" placeholder="password" class="form-control" name="password">
-              </div>
-           
-              <p>don't have any account? click here to <a href="{{ url('/register') }}">register</a></p>
-
-              <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-              </div>
-            </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
           </div>
         </div>
       </div>
