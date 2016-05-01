@@ -156,14 +156,17 @@ td {
 #normal {
   width: 75%; 
   height: auto;
+  vertical-align: bottom;
 }
 #large {
   width: 85%; 
   height: auto;
+  vertical-align: bottom;
 }
 #huge {
   width: 100%; 
   height: auto;
+  vertical-align: bottom;
 }
 
 /* GALLERY */
