@@ -43,7 +43,7 @@
             {{ csrf_field() }}
           <div class="modal-body">
             <h4>Title</h4>
-            <input type="text" class="form-control" name="title" placeholder="input title here..">
+            <input id="title" type="text" class="form-control" name="title" placeholder="input title here..">
           </div>
 
           <div class="modal-footer">
