@@ -41,11 +41,9 @@
       Draw Now!
       </button>
     @else
-      
-      <form method="POST" action="{{ url('/room') }}">
-      {{ csrf_field() }}
-        <button type="submit" class="btn btn-lg btn-default">Draw Now!</button>
-      </form>
+      <button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target="#roomModal">
+        Draw Now!
+      </button>
     @endif
 
 
@@ -63,6 +61,28 @@
         </div>
       </div>
     </div>
+    <!--END MODAL-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form method="POST" action="{{ url('/room') }}">
+            {{ csrf_field() }}
+          <div class="modal-body">
+            <h4>Title</h4>
+            <input id="title" type="text" class="form-control" placeholder="input title here..">
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-lg btn-default">Draw Now!</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--END MODAL-->
+
 </div>
 
 

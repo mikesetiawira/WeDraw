@@ -168,6 +168,9 @@ td {
   height: auto;
   vertical-align: bottom;
 }
+#title {
+  height: 50px;
+}
 
 /* GALLERY */
 .gallery {
