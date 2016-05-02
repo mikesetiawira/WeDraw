@@ -13,10 +13,9 @@
           Create New Rooms!
         </button>
       @else
-        <form method="POST" action="{{ url('/room') }}">
-        {{ csrf_field() }}
-          <button type="submit" class="btn btn-lg btn-default">Create New Room!</button>
-        </form>
+        <button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target="#roomModal">
+          Create New Rooms!
+        </button>
       @endif
 	  </div>
 
@@ -30,6 +29,26 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END MODAL-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4>Title</h4>
+            <input type="text" class="form-control" placeholder="input title here..">
+          </div>
+
+          <div class="modal-footer">
+            <form method="POST" action="{{ url('/room') }}">
+            {{ csrf_field() }}
+              <button type="submit" class="btn btn-lg btn-default">Create New Room!</button>
+            </form>
           </div>
         </div>
       </div>
