@@ -15,8 +15,8 @@
   <input id="invisible_canvas" name="canvas" type="hidden" value="{{ $room->canvas }}">
   <img id="crayons" src="crayontexture.png" hidden> 
 
-  <h3>Image Title</h3>
-  <h4>Image Owner</h4>
+  <h3>{{ $room->title }}</h3>
+  <h4>{{ $owner->name }}</h4>
   
   <p>Canvas size :  <input id="width" value="800"> x <input id="height" value="480"> px</p>
     

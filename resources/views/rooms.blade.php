@@ -39,17 +39,17 @@
     <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+          <form method="POST" action="{{ url('/room') }}">
+            {{ csrf_field() }}
           <div class="modal-body">
             <h4>Title</h4>
-            <input type="text" class="form-control" placeholder="input title here..">
+            <input type="text" class="form-control" name="title" placeholder="input title here..">
           </div>
 
           <div class="modal-footer">
-            <form method="POST" action="{{ url('/room') }}">
-            {{ csrf_field() }}
               <button type="submit" class="btn btn-lg btn-default">Create New Room!</button>
-            </form>
           </div>
+          </form>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ class RoomController extends Controller
     {
 
         $room = $request->user()->rooms()->create([
-            'title' => '',
+            'title' => $request->title,
             'json' => '{"x":[], "y":[], "drag":[], "shape":[], "color":[], "size":[]}'
         ]);
 
@@ -28,7 +28,8 @@ class RoomController extends Controller
     public function view($id)
     {
         $room = Room::findOrFail($id);
-        return view('canvas.canvas', ['room' => $room]);
+        $owner = $room->user;
+        return view('canvas.canvas', ['room' => $room, 'owner' => $owner]);
         //return view('canvas.canvas');
     }
 }
