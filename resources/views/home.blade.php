@@ -41,7 +41,11 @@
       Draw Now!
       </button>
     @else
-      <a class="btn btn-lg btn-default" type="button" href="{{ url('/canvas') }}">Draw Now!</a>
+      
+      <form method="POST" action="{{ url('/room') }}">
+      {{ csrf_field() }}
+        <button type="submit" class="btn btn-lg btn-default">Draw Now!</button>
+      </form>
     @endif
 
 
@@ -62,9 +66,4 @@
 </div>
 
 
-
-<form class="form-register" method="POST" action="{{ url('/room') }}">
-  {{ csrf_field() }}
-  <button type="submit">Submit</button>
-</form>
 @endsection

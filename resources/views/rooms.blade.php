@@ -13,7 +13,10 @@
           Create New Rooms!
         </button>
       @else
-        <a class="btn btn-lg btn-default" type="button" href="{{ url('/canvas') }}">Create New Rooms!</a>
+        <form method="POST" action="{{ url('/room') }}">
+        {{ csrf_field() }}
+          <button type="submit" class="btn btn-lg btn-default">Create New Room!</button>
+        </form>
       @endif
 	  </div>
 
