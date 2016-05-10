@@ -25,18 +25,19 @@
   </div>
 
   <div class="drawing-tools">
-    <table>
+    <div class="table-responsive">
+    <table class="table">
     <tr>
       <td>Color :  </td>
       <td class="val"><input id="color" class="jscolor" value="ab2567"></td>
       
       <td>Environment :  </td>
       <td class="val">
-        <button id="AA" class="btn-tools"><img src="{{ URL::asset('image/clean.png') }}" title="Clean"></button> 
-        <button id="BB" class="btn-tools"><img src="{{ URL::asset('image/crayon.png') }}" title="Crayon"></button>
+        <button id="AA" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Clean"><img src="{{ URL::asset('image/clean.png') }}"></button> 
+        <button id="BB" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Crayon"><img src="{{ URL::asset('image/crayon.png') }}"></button>
       </td>
 
-      <td><button id="clear" class="btn-clear"><img src="{{ URL::asset('image/clear.png') }}" title="Clear"></button></td>
+      <td><button id="clear" class="btn-clear"  data-toggle="tooltip" data-placement="bottom" title="Clear"><img src="{{ URL::asset('image/clear.png') }}"></button></td>
     </tr>
     <tr>
       <td>Size :  </td>
@@ -44,29 +45,35 @@
 
       <td>Tools :  </td>
       <td class="val">
-        <button id="A" class="btn-tools"><img src="{{ URL::asset('image/eraser.png') }}" title="Eraser"></button> 
-        <button id="B" class="btn-tools"><img src="{{ URL::asset('image/marker.png') }}" title="Marker"></button>
+        <button id="A" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Eraser"><img src="{{ URL::asset('image/eraser.png') }}"></button> 
+        <button id="B" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Marker"><img src="{{ URL::asset('image/marker.png') }}"></button>
       </td>
     </tr>
     <tr>
       <td></td>
       <td class="val">
-        <button id="a" class="btn-tools"><img src="{{ URL::asset('image/font.png') }}" title="Normal" id="normal"></button>
-        <button id="b" class="btn-tools"><img src="{{ URL::asset('image/font.png') }}" title="Large" id="large"></button>
-        <button id="c" class="btn-tools"><img src="{{ URL::asset('image/font.png') }}" title="Huge" id="huge"></button>
+        <button id="a" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Normal" id="normal"><img src="{{ URL::asset('image/font.png') }}"></button>
+        <button id="b" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Large" id="large"><img src="{{ URL::asset('image/font.png') }}"></button>
+        <button id="c" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Huge" id="huge"><img src="{{ URL::asset('image/font.png') }}"></button>
       </td>
 
       <td>Shapes :  </td>
       <td class="val">
-        <button id="M" class="btn-tools"><img src="{{ URL::asset('image/line.png') }}" title="Line"></button>
-        <button id="O" class="btn-tools"><img src="{{ URL::asset('image/square.png') }}" title="Square"></button>
-        <button id="N" class="btn-tools"><img src="{{ URL::asset('image/round.png') }}" title="Ellipse"></button>
+        <button id="M" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Line"><img src="{{ URL::asset('image/line.png') }}"></button>
+        <button id="O" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Square"><img src="{{ URL::asset('image/square.png') }}"></button>
+        <button id="N" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Ellipse"><img src="{{ URL::asset('image/round.png') }}"></button>
       </td>
     </tr>
     </table>
+  </div>
   </div>
   
   <script src="{{ URL::asset('js/jquery-1.12.2.min.js') }}"></script>
   <script src ="{{ URL::asset('js/canvas.js') }}"> </script>
   <script src="{{ URL::asset('js/jscolor.js') }}"></script>
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+  </script>
 @endsection

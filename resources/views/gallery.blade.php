@@ -9,7 +9,8 @@
   <h3>GALLERY</h3>
 
   <div class="gallery">
-  	<table>
+    <div class="table-responsive">
+  	<table class="table">
   	  <tr>
   	  	<td><a href=#>
   	  	  <img onclick="myFunction(this.id)" data-toggle="modal" data-target="#myModal" id="image" src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png">
@@ -19,17 +20,10 @@
   	  </tr>
 
   	  <tr>
-  	  	<td class="title">Image Title</td>
-  	  	<td class="title">Image Title</td>
-  	  	<td class="title">Image Title</td>
+  	  	<td class="title">Image Title<br>Image Owner</td>
+  	  	<td class="title">Image Title<br>Image Owner</td>
+  	  	<td class="title">Image Title<br>Image Owner</td>
   	  </tr>
-
-  	  <tr class="owner">
-  	  	<td>Image Owner</td>
-  	  	<td>Image Owner</td>
-  	  	<td>Image Owner</td>
-  	  </tr>
-
 
   	  <tr>
   	  	<td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
@@ -38,17 +32,12 @@
   	  </tr>
 
   	  <tr>
-  	  	<td class="title">Image Title</td>
-  	  	<td class="title">Image Title</td>
-  	  	<td class="title">Image Title</td>
-  	  </tr>
-
-  	  <tr class="owner">
-  	  	<td>Image Owner</td>
-  	  	<td>Image Owner</td>
-  	  	<td>Image Owner</td>
-  	  </tr>
+        <td class="title">Image Title<br>Image Owner</td>
+        <td class="title">Image Title<br>Image Owner</td>
+        <td class="title">Image Title<br>Image Owner</td>
+      </tr>
   	</table>
+    </div>
 
   	<!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -72,12 +61,6 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script>
-    $(document).ready(function(){
-    	$('[data-toggle="tooltip"]').tooltip();
-    });
-  </script>
   <script>
   function myFunction(clicked_id) {
     q = document.getElementById(clicked_id).src;

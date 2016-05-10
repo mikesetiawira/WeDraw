@@ -5,7 +5,7 @@
 <div class="content">
   <form class="form-register" method="POST" action="{{ url('/register') }}">
     {!! csrf_field() !!}
-    <h2 class="form-register-heading">REGISTER</h2>
+    <h3 class="form-register-heading">REGISTER</h3>
 
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <label for="inputUsername" class="sr-only">Username</label>

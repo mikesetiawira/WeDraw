@@ -17,11 +17,15 @@ body {
 .header {
   padding-top: 114px;
 }
-
 .user {
-  text-align: right;
   padding-top: 20px;
   padding-bottom: 25px;
+}
+.dropdown h3 {
+  color: #B64926;
+}
+.dropdown h3:hover {
+  color: #468966;
 }
 
 /* NAVBAR */
@@ -171,6 +175,12 @@ td {
 #title {
   height: 50px;
 }
+.drawing-tools .table-responsive .table tr {
+  border: 3px solid #DBD2AA;
+}
+.drawing-tools .tooltip-inner {
+  background-color: gray;
+}
 
 /* GALLERY */
 .gallery {
@@ -183,6 +193,7 @@ td {
 .gallery td {
   text-align: center;
   padding: 0px 50px 0px;
+  width: 33.333%;
 }
 .title a {
   font-weight: bold;
@@ -193,21 +204,35 @@ td {
   text-decoration: none;
   color: #5E5A59;
 }
-.owner {
-  height: 50px;
-  vertical-align: top;
-}
 .gallery .modal-header {
   text-align: left;
 }
 .gallery .modal-body {
   text-align: center;
 }
+.gallery .table-responsive .table tr {
+  border: 3px solid #F7ECBF;
+}
 
 /* ROOM */
 .new-room {
   text-align: right;
   padding-bottom: 50px;
+}
+
+/* PROFILE */
+.profile .col-md-3 {
+  text-align: right;
+}
+.profile h5 {
+  font-weight: bold;
+}
+.profile .table-responsive .table tr {
+  border: 3px solid #F7ECBF;
+}
+.profile h3 {
+  border-bottom: 2px solid black;
+  padding-bottom: 8px;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

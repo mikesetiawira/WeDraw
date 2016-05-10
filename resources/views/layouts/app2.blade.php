@@ -16,12 +16,15 @@
 
   <body>
     <div class="container">
-      <div class="navbar-header">
+      <div class="row">
+      <div class="col-md-6">
         <a class="navbar-brand" href="{{ url('/home') }}"><h2>WE DRAW!</h2></a>
       </div>
 
-      @if (Request::url() !== url('/register'))
+      
+      @if (Request::url() !== url('/register') && Request::url() !== url('/profile'))
         @if (Auth::guest())
+        <div class="col-md-6">
           <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right" method="POST" action="{{ url('/login') }}">
                {!! csrf_field() !!}
@@ -55,20 +58,32 @@
               </div>
             </form>
           </div><!--/.navbar-collapse -->
+        </div>
 
-        @else
+        @else <!-- if user -->
+        <div class="col-md-3 col-md-offset-3">
           <div class="user">
-            <h3>Hi, {{ Auth::user()->name }}!</h3>
-            <a class="btn btn-default" type="button" href="{{ url('/logout') }}">Logout</a>
+            <div class="dropdown">
+              <h3 class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{ Auth::user()->name }}!   <span class="caret"></span></h3>
+              
+              
+              <ul class="dropdown-menu">
+                <li><a href="{{ url('/profile') }}">My Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{{ url('/logout') }}">Logout</a></li>
+              </ul>
+            </div>
           </div>
+        </div>
         @endif
 
-      @else
+      @else <!-- if page register -->
         <div id="navbar" class="navbar-collapse collapse">
         </div>
         <div class="user">
         </div>
       @endif
+      </div>
 
       <nav>
         <ul class="nav nav-justified">
