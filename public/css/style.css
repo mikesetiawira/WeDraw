@@ -48,7 +48,12 @@ body {
 }
 .nav-justified > li > a:hover {
   background-color: #F7ECBF;
-  color: #468966;
+  color: #45B78A;
+  opacity: 0.7;
+}
+.navbar-brand {
+  font-family: 'Finger Paint', cursive;
+  color: #B64926;
 }
 
 /* LOG IN */

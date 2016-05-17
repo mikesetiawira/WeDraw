@@ -12,6 +12,8 @@
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
