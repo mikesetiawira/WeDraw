@@ -168,7 +168,7 @@
 
   
             var img    = canvas.toDataURL("image/jpeg");
-            document.write('<img src="'+img+'" width="300" height="200"/>');
+            document.write('<a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!"><img src="'+img+'" width="300" height="200"/></a>');
           </script>
           </td>
           @endif
