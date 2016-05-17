@@ -153,10 +153,21 @@
               context.stroke();
               }
             }
-          
+            
+            var imgData=context.getImageData(0,0,canvas.width,canvas.height);
+            var data=imgData.data;
+            for(var i=0;i<data.length;i+=4){
+                if(data[i+3]<255){
+                    data[i]=255;
+                    data[i+1]=255;
+                    data[i+2]=255;
+                    data[i+3]=255;
+                }
+            }
+            context.putImageData(imgData,0,0);
 
   
-            var img    = canvas.toDataURL("image/png");
+            var img    = canvas.toDataURL("image/jpeg");
             document.write('<img src="'+img+'" width="300" height="200"/>');
           </script>
           </td>
