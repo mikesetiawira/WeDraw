@@ -44,7 +44,8 @@ Route::group(['middleware' => 'web'], function () {
     ->name('gallery');
 
     Route::get('/rooms', function () {
-        return view('rooms');
+        $rooms = App\Room::all();
+        return view('rooms', ['rooms' => $rooms]);
     });
 
     Route::get('/profile', function () {

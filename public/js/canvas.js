@@ -36,7 +36,7 @@ $('canvas').mouseup(function(e){
 		clickX.push(mouse.x);
 		clickY.push(mouse.y);
 		clickDrag.push(true);
-		shape.push("none");
+		shape.push("line");
 		clickColor.push(curColor);
 		clickSize.push(curSize);
 	}
@@ -73,6 +73,23 @@ $('canvas').mouseup(function(e){
 		clickColor.push(curColor);
 		clickSize.push(curSize);
 	}
+
+	if(curTool != "line" && curTool != "rectangle"&& curTool != "ellipse") {
+		shape = shape.concat(tempShape);
+		clickX = clickX.concat(tempX);
+		clickY = clickY.concat(tempY);
+		clickDrag = clickDrag.concat(tempDrag);
+		clickColor = clickColor.concat(tempColor);
+		clickSize = clickSize.concat(tempSize);
+
+		tempX = new Array();
+		tempY = new Array();
+		tempDrag = new Array();
+		tempShape = new Array();
+		tempColor = new Array();
+		tempSize = new Array();
+	}
+
 	paint = false;
 
 	storeCanvas();
@@ -94,11 +111,11 @@ var mouse = {x: 0, y: 0};
 var start_mouse = {x: 0, y: 0};
 
 
-var curColor = "#AB2567";
+var curColor = "#"+$('#color').val();
 var clickColor = new Array();
 
 var clickSize = new Array();
-var curSize = normal;
+var curSize = $('#size').val();
 var normal = 5;
 var large = 10
 var huge = 15;
@@ -110,6 +127,14 @@ var clickTool = new Array();
 var curTool = "Draw"
 
 var id;
+
+// TEMP for marker
+var tempX = new Array();
+var tempY = new Array();
+var tempDrag = new Array();
+var tempShape = new Array();
+var tempColor = new Array();
+var tempSize = new Array();
 
 $("#input").on("input",function(e){
  if($(this).data("lastval")!= $(this).val()){
@@ -160,6 +185,7 @@ $(document).ready(function(){
 			break;
 		case 'B':
 			curTool = "marker";
+			curColor = "#"+$('#color').val();
 			break;
 		case 'AA':
 			envi = "clean";
@@ -169,12 +195,15 @@ $(document).ready(function(){
 			break;
 		case 'M':
 			curTool = "line";
+			curColor = "#"+$('#color').val();
 			break;
 		case 'N':
 			curTool = "ellipse";
+			curColor = "#"+$('#color').val();
 			break;
 		case 'O':
 			curTool = "rectangle";
+			curColor = "#"+$('#color').val();
 			break;
 		case 'clear':
 			curTool = "marker";
@@ -186,6 +215,7 @@ $(document).ready(function(){
 			clickTool = new Array();
 			shape = new Array();
 			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+			storeCanvas();
 			break;
 		}
     });
@@ -201,16 +231,16 @@ $(document).ready(function(){
 function addClick(x, y, dragging)
 {
 	if(curTool != "line" && curTool != "rectangle"&& curTool != "ellipse") {
-		shape.push("none");
-		clickX.push(x);
-		clickY.push(y);
-		clickDrag.push(dragging);
+		tempShape.push("marker");
+		tempX.push(x);
+		tempY.push(y);
+		tempDrag.push(dragging);
 		if(curTool == "eraser") {
-			clickColor.push("#FFFFFF");
+			tempColor.push("#FFFFFF");
 		} else {
-			clickColor.push(curColor);
+			tempColor.push(curColor);
 		}
-		clickSize.push(curSize);
+		tempSize.push(curSize);
 	}
 	else {
 		if(!dragging) {
@@ -232,11 +262,12 @@ function redraw(){
   context.lineWidth = 5;
 			
   for(var i=0; i < clickX.length; i++) {		
-    context.beginPath();
+   context.beginPath();
+
     if(clickDrag[i] && i){
-      context.moveTo(clickX[i-1], clickY[i-1]);
+      	context.moveTo(clickX[i-1], clickY[i-1]);
      }else{
-       context.moveTo(clickX[i], clickY[i]);
+       	context.moveTo(clickX[i], clickY[i]);
     }
 	 
 	if(shape[i] == "rectangle") {
@@ -250,6 +281,8 @@ function redraw(){
 	}
 	
 	else if(shape[i] == "ellipse") {
+
+		if(clickDrag[i]==true) {
 		var x = Math.min(clickX[i-1], clickX[i]);
 		var y = Math.min(clickY[i-1], clickY[i]);
 		
@@ -275,7 +308,8 @@ function redraw(){
 		context.lineWidth = clickSize[i];
 		context.stroke();
 	}
-	else {
+	}
+	else if(shape[i] == "marker" || shape[i] == "line") {
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();
 		context.strokeStyle = clickColor[i];
@@ -284,7 +318,7 @@ function redraw(){
 	}
 
   }
-  
+  if (paint) {
 	if(curTool == "line") {
 		context.beginPath();
 		context.moveTo(start_mouse.x, start_mouse.y);
@@ -334,7 +368,27 @@ function redraw(){
 		context.stroke();
 		
 	}
-	
+
+	if(curTool != "line" && curTool != "rectangle"&& curTool != "ellipse") {
+		for(var i=0; i < tempX.length; i++) {		
+    		context.beginPath();
+	    	if(tempDrag[i] && i){
+	      		context.moveTo(tempX[i-1], tempY[i-1]);
+	     	}
+	     	else{
+	       		context.moveTo(tempX[i], tempY[i]);
+	    	}
+
+	    	context.lineTo(tempX[i], tempY[i]);
+			context.closePath();
+			context.strokeStyle = tempColor[i];
+			context.lineWidth = tempSize[i];
+			context.stroke();
+
+	    }
+	}
+
+  }
 
 	if(envi == "crayon") {
     context.globalAlpha = 0.4;

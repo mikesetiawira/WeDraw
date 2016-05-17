@@ -3,7 +3,7 @@
 @section('title')
     <title>We Draw! - Rooms</title>
 @endsection
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 @section('content')
 <div class="content">
   <h3>ONLINE ROOMS</h3>
@@ -57,52 +57,142 @@
 
     <div class="gallery">
     <table>
+      <canvas id="paint" width="800" height="480" style="border:1px solid #787272;" hidden></canvas>
+      @for ($i = 0; $i < count($rooms); $i = $i+3)
       <tr>
-        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
-        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
-        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
+          @for ($j = 0; $j < 3; $j++)
+          @if ($i+$j < count($rooms))
+          <td>
+          
+      
+          <script>
+           
+            canvas = document.getElementById('paint')
+            context = canvas.getContext("2d");
+
+            var id = '{{ $rooms[$i+$j]->id }}';
+
+            var clickX = new Array();
+            var clickY = new Array();
+            var clickDrag = new Array();
+            var shape = new Array();
+            var clickColor = new Array();
+            var clickSize = new Array();
+            function loadCanvas() {
+            $.ajax({
+              url: 'room/' + id + '/load',
+              type: 'get',
+              async: false,
+              success: function(data) {
+                var obj = JSON.parse(data);
+                clickX = obj.x;
+                clickY = obj.y;
+                clickDrag = obj.drag;
+                shape = obj.shape;
+                clickColor = obj.color;
+                clickSize = obj.size;
+              }
+            });
+          }
+
+          loadCanvas();
+          context.clearRect(0, 0, context.canvas.width, context.canvas.height); 
+           for(var i=0; i < clickX.length; i++) {    
+             context.beginPath();
+
+              if(clickDrag[i] && i){
+                  context.moveTo(clickX[i-1], clickY[i-1]);
+               }else{
+                  context.moveTo(clickX[i], clickY[i]);
+              }
+             
+            if(shape[i] == "rectangle") {
+              var x = Math.min(clickX[i-1], clickX[i]);
+              var y = Math.min(clickY[i-1], clickY[i]);
+              var width = Math.abs(clickX[i-1] - clickX[i]);
+              var height = Math.abs(clickY[i-1] - clickY[i]);
+              context.strokeStyle = clickColor[i];
+              context.lineWidth = clickSize[i];
+              context.strokeRect(x, y, width, height);
+            }
+            
+            else if(shape[i] == "ellipse") {
+
+              if(clickDrag[i]==true) {
+              var x = Math.min(clickX[i-1], clickX[i]);
+              var y = Math.min(clickY[i-1], clickY[i]);
+              
+              var w = Math.abs(clickX[i-1] - clickX[i]);
+              var h = Math.abs(clickY[i-1] - clickY[i]);
+              
+              var kappa = .5522848,
+              ox = (w / 2) * kappa, // control point offset horizontal
+              oy = (h / 2) * kappa, // control point offset vertical
+              xe = x + w,           // x-end
+              ye = y + h,           // y-end
+              xm = x + w / 2,       // x-middle
+              ym = y + h / 2;       // y-middle
+              
+              context.beginPath();
+              context.moveTo(x, ym);
+              context.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+              context.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+              context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+              context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+              context.closePath();
+              context.strokeStyle = clickColor[i];
+              context.lineWidth = clickSize[i];
+              context.stroke();
+              }
+            }
+            else if(shape[i] == "marker" || shape[i] == "line") {
+              context.lineTo(clickX[i], clickY[i]);
+              context.closePath();
+              context.strokeStyle = clickColor[i];
+              context.lineWidth = clickSize[i];
+              context.stroke();
+              }
+            }
+          
+
+  
+            var img    = canvas.toDataURL("image/png");
+            document.write('<img src="'+img+'" width="300" height="200"/>');
+          </script>
+          </td>
+          @endif
+          @endfor
       </tr>
 
       <tr>
-        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
-        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
-        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
+
+        @for ($j = 0; $j < 3; $j++)
+        @if ($i+$j < count($rooms))
+        <td class="title"><a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">{{ $rooms[$i+$j]->title }}</a></td>
+        @endif
+        @endfor
+        
       </tr>
 
       <tr class="owner">
-        <td>Image Owner</td>
-        <td>Image Owner</td>
-        <td>Image Owner</td>
+        @for ($j = 0; $j < 3; $j++)
+        @if ($i+$j < count($rooms))
+        <td>{{ $rooms[$i+$j]->user->name }}</td>
+        @endif
+        @endfor
       </tr>
-
-
-      <tr>
-        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
-        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
-        <td><img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png"></td>
-      </tr>
-
-      <tr>
-        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
-        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
-        <td class="title"><a href="#" data-toggle="tooltip" data-placement="right" title="Join Room!">Image Title</a></td>
-      </tr>
-
-      <tr class="owner">
-        <td>Image Owner</td>
-        <td>Image Owner</td>
-        <td>Image Owner</td>
-      </tr>
+      @endfor
     </table>
   </div>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
   <script>
     $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip();
     });
   </script>
+
 
 </div>
 

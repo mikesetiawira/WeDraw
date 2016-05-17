@@ -29,7 +29,7 @@
     <table class="table">
     <tr>
       <td>Color :  </td>
-      <td class="val"><input id="color" class="jscolor" value="ab2567"></td>
+      <td class="val"><input id="color" name="color" class="jscolor" value="ab2567"></td>
       
       <td>Environment :  </td>
       <td class="val">
