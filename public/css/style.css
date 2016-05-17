@@ -25,13 +25,17 @@ body {
   color: #B64926;
 }
 .dropdown h3:hover {
-  color: #468966;
+  color: #017040;
+}
+#page-title {
+  color: #B64926;
+  font-weight: bold;
 }
 
 /* NAVBAR */
 .nav-justified {
-  border-top: 3px solid #468966;
-  border-bottom: 3px solid #468966;
+  border-top: 3px solid #017040;
+  border-bottom: 3px solid #017040;
 }
 .nav-justified > li > a {
   padding-top: 15px;
@@ -39,12 +43,12 @@ body {
   margin-bottom: 0;
   font-size: 25px;
   font-weight: bold;
-  color: #468966;
+  color: #017040;
   text-align: center;
 }
 .nav-justified > li > a:hover {
   background-color: #F7ECBF;
-  color: #B64926;
+  color: #468966;
 }
 
 /* LOG IN */
@@ -231,7 +235,7 @@ td {
   border: 3px solid #F7ECBF;
 }
 .profile h3 {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #B64926;
   padding-bottom: 8px;
 }
 /* Responsive: Portrait tablets and up */

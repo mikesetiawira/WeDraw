@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-  <h3>GALLERY</h3>
+  <h3 id="page-title">GALLERY</h3>
 
   <div class="gallery">
     <div class="table-responsive">

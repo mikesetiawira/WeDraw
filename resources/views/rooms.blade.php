@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-  <h3>ONLINE ROOMS</h3>
+  <h3 id="page-title">ONLINE ROOMS</h3>
     <div class="new-room">
       @if (Auth::guest())
         <button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target="#myModal">
