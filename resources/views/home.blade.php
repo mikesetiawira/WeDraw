@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-    <h3>POPULAR THIS WEEK</h3>
+    <h3 id="page-title">POPULAR THIS WEEK</h3>
   
     <div id="mySlider" class="slider slide" data-ride="slider">
       <ol class="slider-indicators">
