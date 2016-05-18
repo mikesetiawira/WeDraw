@@ -228,6 +228,14 @@ td {
   text-align: right;
   padding-bottom: 50px;
 }
+.room td {
+  padding: 0px 50px 0px;
+  text-align: center;
+  width: 33.333%;
+}
+.room .room-img {
+  padding-top: 50px;
+}
 
 /* PROFILE */
 .profile .col-md-3 {

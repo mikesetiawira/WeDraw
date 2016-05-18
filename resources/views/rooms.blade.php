@@ -55,16 +55,15 @@
     </div>
     <!--END MODAL-->
 
-    <div class="gallery">
+    <div class="room">
     <table>
       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;" hidden></canvas>
       @for ($i = 0; $i < count($rooms); $i = $i+3)
       <tr>
           @for ($j = 0; $j < 3; $j++)
           @if ($i+$j < count($rooms))
-          <td>
+          <td class="room-img">
           
-      
           <script>
            
             canvas = document.getElementById('paint')
@@ -176,13 +175,11 @@
       </tr>
 
       <tr>
-
         @for ($j = 0; $j < 3; $j++)
         @if ($i+$j < count($rooms))
         <td class="title"><a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">{{ $rooms[$i+$j]->title }}</a></td>
         @endif
         @endfor
-        
       </tr>
 
       <tr class="owner">
@@ -195,7 +192,22 @@
       @endfor
     </table>
   </div>
+  
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4>Please Log In First!</h4>
+          </div>
 
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--END MODAL-->
 
 
   <script>
