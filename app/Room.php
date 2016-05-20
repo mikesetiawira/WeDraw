@@ -12,7 +12,7 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'json'
+        'title', 'json', 'image_path', 'status'
     ];
 
     /**

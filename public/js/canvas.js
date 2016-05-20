@@ -93,6 +93,7 @@ $('canvas').mouseup(function(e){
 	paint = false;
 
 	storeCanvas();
+	updateImage();
 });
 
 //if cursor leave the html, leave paint
@@ -217,6 +218,8 @@ $(document).ready(function(){
 			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 			storeCanvas();
 			break;
+		case 'save':
+			updateImage();
 		}
     });
 
@@ -436,7 +439,24 @@ function storeCanvas() {
     });
 }
 
+function updateImage() {
+	var img = canvas.toDataURL("image/png");
+	//alert(typeof img);
+
+	$.ajax({
+      url: id + '/updateImage',
+      type: 'put',
+      data: {image: img},
+      error: function() {
+      	alert("Update image error");
+      },
+    });
+}
+
 setInterval(function () {
-	loadCanvas();
-	redraw();
+	if (!paint) {
+		loadCanvas();
+		redraw();
+		updateImage();
+	}
 }, 3000);

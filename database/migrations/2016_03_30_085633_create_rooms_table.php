@@ -17,6 +17,8 @@ class CreateRoomsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('json');
+            $table->string('image_path');
+            $table->string('status');
             $table->timestamps();
             
             $table->foreign('user_id')

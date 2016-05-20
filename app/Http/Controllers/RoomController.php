@@ -19,7 +19,9 @@ class RoomController extends Controller
 
         $room = $request->user()->rooms()->create([
             'title' => $request->title,
-            'json' => '{"x":[], "y":[], "drag":[], "shape":[], "color":[], "size":[]}'
+            'json' => '{"x":[], "y":[], "drag":[], "shape":[], "color":[], "size":[]}',
+            'image_path' => 'images/wedraw-'.str_random(12).'.png',
+            'status' => 'ongoing'
         ]);
 
         return redirect()->route('room', [$room]);
@@ -31,5 +33,11 @@ class RoomController extends Controller
         $owner = $room->user;
         return view('canvas.canvas', ['room' => $room, 'owner' => $owner]);
         //return view('canvas.canvas');
+    }
+
+    public function updateImage($id)
+    {
+        $room = Room::findOrFail($id);
+        $request->file('image')->move($room->image_path); 
     }
 }

@@ -86,7 +86,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::put('room/{id}/store', function ($id) {
         if(Request::ajax()) {
             App\Room::findOrFail($id)->update(['json' => Input::get('json')]);
-            return Input::get('json');
         }
     });
 
@@ -99,4 +98,17 @@ Route::group(['middleware' => 'web'], function () {
     });
 
 
+
+    Route::put('room/{id}/updateImage', function ($id) {
+        if(Request::ajax()) {
+            $img = Input::get('image');
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+
+            $room = App\Room::findOrFail($id);
+            file_put_contents($room->image_path, $data);
+            return $room->image_path;
+        }
+    });
 });
