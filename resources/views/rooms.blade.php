@@ -56,7 +56,8 @@
     <!--END MODAL-->
 
     <div class="room">
-    <table>
+    <div class="table-responsive">
+    <table class="table">
       <canvas id="paint" width="800" height="480" style="border:1px solid #787272;" hidden></canvas>
       @for ($i = 0; $i < count($rooms); $i = $i+3)
       <tr>
@@ -191,6 +192,7 @@
       </tr>
       @endfor
     </table>
+    </div>
   </div>
   
   <!-- Modal -->

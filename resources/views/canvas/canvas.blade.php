@@ -48,6 +48,7 @@
         <button id="A" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Eraser"><img src="{{ URL::asset('image/eraser.png') }}"></button> 
         <button id="B" class="btn-tools" data-toggle="tooltip" data-placement="bottom" title="Marker"><img src="{{ URL::asset('image/marker.png') }}"></button>
       </td>
+      <td><button id="save" class="btn-clear"  data-toggle="tooltip" data-placement="bottom" title="Save"><img src="{{ URL::asset('image/save.png') }}"></button></td>
     </tr>
     <tr>
       <td></td>

@@ -235,6 +235,9 @@ td {
 .room .room-img {
   padding-top: 50px;
 }
+.room .table-responsive .table tr {
+  border: 3px solid #F7ECBF;
+}
 
 /* PROFILE */
 .profile .col-md-3 {
