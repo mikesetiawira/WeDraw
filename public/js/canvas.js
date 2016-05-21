@@ -460,3 +460,11 @@ setInterval(function () {
 		updateImage();
 	}
 }, 3000);
+
+function uneditables(){
+	var lockedcanvas  = document.getElementById('paint');
+	
+	for (var i = 0, len = lockedcanvas.length; i < len; ++i) {
+    lockedcanvas[i].contentEditable = "false";
+}
+}
