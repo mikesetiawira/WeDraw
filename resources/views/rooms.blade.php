@@ -58,31 +58,36 @@
     <div class="room">
     <div class="table-responsive">
     <table class="table">
-      <canvas id="paint" width="800" height="480" style="border:1px solid #787272;" hidden></canvas>
       @for ($i = 0; $i < count($rooms); $i = $i+3)
       <tr>
-          @for ($j = 0; $j < 3; $j++)
+        @for ($j = 0; $j < 3; $j++)
           @if ($i+$j < count($rooms))
-          <td class="room-img">
-          <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!"><img src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/></a>
-          </td>
+            <td class="room-img">
+              <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">
+                <img src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
+              </a>
+            </td>
           @endif
-          @endfor
+        @endfor
       </tr>
 
       <tr>
         @for ($j = 0; $j < 3; $j++)
-        @if ($i+$j < count($rooms))
-        <td class="title"><a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">{{ $rooms[$i+$j]->title }}</a></td>
-        @endif
+          @if ($i+$j < count($rooms))
+            <td class="title">
+              <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">
+                {{ $rooms[$i+$j]->title }}
+              </a>
+            </td>
+          @endif
         @endfor
       </tr>
 
       <tr class="owner">
         @for ($j = 0; $j < 3; $j++)
-        @if ($i+$j < count($rooms))
-        <td>{{ $rooms[$i+$j]->user->name }}</td>
-        @endif
+          @if ($i+$j < count($rooms))
+            <td>{{ $rooms[$i+$j]->user->name }}</td>
+          @endif
         @endfor
       </tr>
       @endfor

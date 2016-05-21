@@ -39,12 +39,13 @@ Route::group(['middleware' => 'web'], function () {
     
 
     Route::get('/gallery', function () {
-        return view('gallery');
+        $rooms = App\Room::where('status', 'completed')->get();
+        return view('gallery', ['rooms' => $rooms]);
     })
     ->name('gallery');
 
     Route::get('/rooms', function () {
-        $rooms = App\Room::all();
+        $rooms = App\Room::where('status', 'ongoing')->get();
         return view('rooms', ['rooms' => $rooms]);
     });
 
@@ -66,15 +67,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/room/{id}', 'RoomController@view')
         ->name('room')
         ->where('id', '[0-9]+');
-    });
-
-    Route::post('room/{id}/updateCanvas', function (Request $request, $id) {
-        $room = App\Room::findOrFail($id);
-        $room->canvas = $request->json;
-        $room->canvas = "herp";
-        $room->save();
-
-        return "yey";
     });
 
     Route::get('room/{id}/load', function ($id) {
