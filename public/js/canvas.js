@@ -461,7 +461,29 @@ setInterval(function () {
 	}
 }, 3000);
 
+//membuat function untuk tombol like
+$(document).ready(function() {
+
+    $('.likeButton').click(function() {
+
+        var contentId = $(this).attr('rel');
+        var link = this;
+
+        if(!$(link).hasClass('liked')) {
+            $.post("like.php", { Id: contentId }).done(function(data) {         
+                if(data) {
+                    $(link).addClass('liked');
+                    $(link).html('liked');
+                }
+            });
+        }
+
+    });
+});
+
+
 function uneditables(){
+	//lockedcanvas ini entar buat dibikin gabisa diedit
 	var lockedcanvas  = document.getElementById('paint');
 	
 	for (var i = 0, len = lockedcanvas.length; i < len; ++i) {
