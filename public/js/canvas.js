@@ -219,7 +219,18 @@ $(document).ready(function(){
 			storeCanvas();
 			break;
 		case 'save':
-			updateImage();
+			if (confirm("Are you sure to save this image?\nYou will not be able to edit this image anymore.")) {
+				updateImage();
+				$.ajax({
+			      url: id + '/saveImage',
+			      type: 'put',
+			      async: false,
+			      error: function() {
+			      	alert("Save image error");
+			      },
+			    });
+			    window.location.replace("../gallery");
+			}
 		}
     });
 
@@ -453,13 +464,34 @@ function updateImage() {
     });
 }
 
+function isCompleted() {
+	var result;
+	$.ajax({
+      url: id + '/status',
+      type: 'get',
+      async: false,
+      success: function(data) {
+      	result = data;
+      },
+    });
+    return result == "completed";
+}
+
 setInterval(function () {
 	if (!paint) {
 		loadCanvas();
 		redraw();
-		updateImage();
+	}
+	//alert(isCompleted());
+	if (isCompleted()){
+		alert("This room is completed and now will be closed.");
+		window.location.replace("../gallery");
 	}
 }, 3000);
+
+setInterval(function () {
+	updateImage();
+}, 10000);
 
 //membuat function untuk tombol like
 $(document).ready(function() {

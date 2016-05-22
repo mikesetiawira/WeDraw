@@ -103,4 +103,14 @@ Route::group(['middleware' => 'web'], function () {
             return $room->image_path;
         }
     });
+
+    Route::put('room/{id}/saveImage', function ($id) {
+        if(Request::ajax()) {
+            App\Room::findOrFail($id)->update(['status' => 'completed']);
+        }
+    });
+
+    Route::get('room/{id}/status', function ($id) {
+        return App\Room::findOrFail($id)->status;
+    });
 });
