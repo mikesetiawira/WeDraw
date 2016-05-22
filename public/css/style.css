@@ -298,3 +298,7 @@ a:active {
 canvas {
   background-color: white;
 }
+
+#imgroms {
+  border: 2px solid #787272;
+}

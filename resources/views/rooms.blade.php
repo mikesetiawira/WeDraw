@@ -63,9 +63,15 @@
         @for ($j = 0; $j < 3; $j++)
           @if ($i+$j < count($rooms))
             <td class="room-img">
-              <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">
-                <img src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
-              </a>
+              @if(Auth::guest())
+                <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="modal" data-target="#myModal">
+                  <img id="imgroms" src="{{ $rooms[$i+$j]->image_path }}" data-toggle="tooltip" data-placement="right" title="Join Room!" width="300" height="200" style="background-color:white"/>
+                </a>
+              @else
+                 <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}" data-toggle="tooltip" data-placement="right" title="Join Room!">
+                  <img id="imgroms" src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
+                </a>
+              @endif
             </td>
           @endif
         @endfor
