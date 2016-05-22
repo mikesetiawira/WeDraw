@@ -53,6 +53,10 @@ Route::group(['middleware' => 'web'], function () {
         return view('profile');
     });
 
+    Route::get('/login', function () {
+        return view('home');
+    });
+
     Route::post('/room', 'RoomController@store');
 
     Route::get('/faq', function () {
