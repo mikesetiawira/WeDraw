@@ -70,7 +70,7 @@
               
               
               <ul class="dropdown-menu">
-                <li><a href="{{ url('/profile') }}">My Profile</a></li>
+                <li><a href="{{ url('/profile/'.Auth::user()->id) }}">My Profile</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="{{ url('/logout') }}">Logout</a></li>
               </ul>

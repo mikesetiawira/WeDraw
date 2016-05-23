@@ -49,8 +49,11 @@ Route::group(['middleware' => 'web'], function () {
         return view('rooms', ['rooms' => $rooms]);
     });
 
-    Route::get('/profile', function () {
-        return view('profile');
+    Route::get('/profile/{id}', function ($id) {
+        $user = App\User::findOrFail($id);
+        $rooms = $user->rooms;
+
+        return view('profile', ['user' => $user, 'rooms' => $rooms]);
     });
 
     Route::get('/login', function () {
