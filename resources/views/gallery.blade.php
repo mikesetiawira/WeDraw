@@ -17,7 +17,7 @@
           @if ($i+$j < count($rooms))
       	  	<td>
               <a href="{{ $rooms[$i+$j]->image_path }}">
-      	  	    <img src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
+      	  	    <img id="imgroms" src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
       	  	  </a>
             </td>
           @endif

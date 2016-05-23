@@ -57,7 +57,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/login', function () {
-        return view('home');
+        return view('errors.503');
     });
 
     Route::post('/room', 'RoomController@store');

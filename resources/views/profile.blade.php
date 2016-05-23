@@ -24,7 +24,7 @@
 
             <tr>
               <td><h5>Password</h5></td>
-              <td></td>
+              <td>**********</td>
               
             </tr>
 
@@ -85,11 +85,11 @@
                 <td>
                 @if ($rooms[$i+$j]->status == 'completed')
                   <a href="{{ '../'.$rooms[$i+$j]->image_path }}">
-                    <img src="{{ '../'.$rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
+                    <img id="imgroms" src="{{ '../'.$rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
                   </a>
                 @else
                   <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}">
-                    <img src="{{ '../'.$rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
+                    <img id="imgroms" src="{{ '../'.$rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
                   </a>
                 @endif
                 </td>
