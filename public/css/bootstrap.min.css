@@ -2360,9 +2360,8 @@ th {
 .table>tfoot>tr>th,
 .table>thead>tr>td,
 .table>thead>tr>th {
-    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
+    padding: 0px;
+    vertical-align: center;
     border-top: 1px solid #ddd
 }
 .table>thead>tr>th {

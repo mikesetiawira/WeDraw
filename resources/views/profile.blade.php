@@ -11,20 +11,20 @@
     {!! csrf_field() !!}
           <table class="table">
             <tr>
-              <td><h5>Username</h5></td>
-              <td><h5>{{ Auth::user()->name }}</h5></td>
+              <td><h4>Username</h4></td>
+              <td><h4>{{ Auth::user()->name }}</h4></td>
               
             </tr>
 
             <tr>
-              <td><h5>Email</h5></td>
-              <td><h5>{{ Auth::user()->email }}</h5></td>
+              <td><h4>Email</h4></td>
+              <td><h4>{{ Auth::user()->email }}</h4></td>
               
             </tr>
 
             <tr>
-              <td><h5>Password</h5></td>
-              <td>**********</td>
+              <td><h4>Password</h4></td>
+              <td><h4>**********</h4></td>
               
             </tr>
 
@@ -82,7 +82,7 @@
           <tr>
             @for ($j = 0; $j < 3; $j++)
               @if ($i+$j < count($rooms))
-                <td>
+                <td class="image">
                 @if ($rooms[$i+$j]->status == 'completed')
                   <a href="{{ '../'.$rooms[$i+$j]->image_path }}">
                     <img id="imgroms" src="{{ '../'.$rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>

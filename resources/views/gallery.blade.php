@@ -15,7 +15,7 @@
   	  <tr>
         @for ($j = 0; $j < 3; $j++)
           @if ($i+$j < count($rooms))
-      	  	<td>
+      	  	<td class="image">
               <a href="{{ $rooms[$i+$j]->image_path }}">
       	  	    <img id="imgroms" src="{{ $rooms[$i+$j]->image_path }}" width="300" height="200" style="background-color:white"/>
       	  	  </a>
