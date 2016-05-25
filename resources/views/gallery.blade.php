@@ -46,34 +46,6 @@
       @endfor
   	</table>
     </div>
-
-  	<!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Image Title</h4>
-          </div>
-          
-          <div class="modal-body">
-            <img src="" id="modal-image">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--END MODAL-->
   </div>
-
-
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script>
-  function myFunction(clicked_id) {
-    q = document.getElementById(clicked_id).src;
-    document.getElementById('modal-image').src=q;
-  }
-  </script>
 </div>
 @endsection
