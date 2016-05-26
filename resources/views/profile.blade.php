@@ -68,7 +68,7 @@
               @if ($i+$j < count($rooms))
                 <td class="title">
                   @if ($rooms[$i+$j]->status == 'completed')
-                    <a href="{{ $rooms[$i+$j]->image_path }}">
+                    <a href="{{ '../'.$rooms[$i+$j]->image_path }}" data-toggle="tooltip" data-placement="right" title="View Image!">
                       {{ $rooms[$i+$j]->title }}
                     </a>
                   @else
