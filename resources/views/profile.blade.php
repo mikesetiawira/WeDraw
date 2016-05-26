@@ -101,9 +101,15 @@
             @for ($j = 0; $j < 3; $j++)
               @if ($i+$j < count($rooms))
                 <td class="title">
-                  <a href="{{ $rooms[$i+$j]->image_path }}">
+                @if ($rooms[$i+$j]->status == 'completed')
+                  <a href="{{ '../'.$rooms[$i+$j]->image_path }}">
                     {{ $rooms[$i+$j]->title }}
                   </a>
+                @else
+                  <a href="{{ url('/room/'.$rooms[$i+$j]->id) }}">
+                   {{ $rooms[$i+$j]->title }}
+                  </a>
+                @endif
                 </td>
               @endif
             @endfor
