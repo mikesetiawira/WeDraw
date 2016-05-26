@@ -222,6 +222,9 @@ td {
 .gallery .table-responsive .table tr {
   border: 3px solid #F7ECBF;
 }
+.gallery .image {
+  padding-top: 25px;
+}
 
 /* ROOM */
 .new-room {
@@ -232,11 +235,11 @@ td {
   text-align: center;
   width: 33.333%;
 }
-.room .room-img {
-  padding-top: 50px;
-}
 .room .table-responsive .table tr {
   border: 3px solid #F7ECBF;
+}
+.room .image {
+  padding-top: 25px;
 }
 
 /* PROFILE */
@@ -252,6 +255,9 @@ td {
 .profile h3 {
   border-bottom: 2px solid #B64926;
   padding-bottom: 8px;
+}
+.profile .image {
+  padding-top: 25px;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
