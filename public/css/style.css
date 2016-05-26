@@ -31,6 +31,12 @@ body {
   color: #B64926;
   font-weight: bold;
 }
+.draw-now {
+  text-align: right;
+}
+.draw-now button {
+  width: 200px;
+}
 
 /* NAVBAR */
 .nav-justified {

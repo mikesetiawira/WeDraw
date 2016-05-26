@@ -35,7 +35,7 @@
       </a>
     </div>
  
-
+    <div class="draw-now">
     @if (Auth::guest())
       <button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target="#myModal">
       Draw Now!
@@ -45,6 +45,7 @@
         Draw Now!
       </button>
     @endif
+    </div>
 
 
     <!-- Modal -->
