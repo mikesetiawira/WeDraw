@@ -32,7 +32,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/{etc}', function () {
-        return view('home');
+        $rooms = App\Room::where('status', 'completed')->orderBy('updated_at', 'desc')->take(3)->get();
+        return view('home', ['rooms' => $rooms]);
     })
     ->name('home')
     ->where('etc', '(home|login)?');

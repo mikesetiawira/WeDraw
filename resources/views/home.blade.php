@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-    <h3 id="page-title">POPULAR THIS WEEK</h3>
+    <h3 id="page-title">RECENTLY COMPLETED</h3>
   
     <div id="mySlider" class="slider slide" data-ride="slider">
       <ol class="slider-indicators">
@@ -17,13 +17,13 @@
       
       <div class="slider-inner" role="listbox">
         <div class="item active">
-          
+         <img src="{{ $rooms[0]->image_path }}" style="background-color:white"/>   
         </div>
         <div class="item">
-         
+         <img src="{{ $rooms[1]->image_path }}" style="background-color:white"/>   
         </div>
         <div class="item">
-      
+         <img src="{{ $rooms[2]->image_path }}" style="background-color:white"/>   
         </div>
       </div>
 

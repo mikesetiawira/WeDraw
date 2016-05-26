@@ -6,6 +6,9 @@
 
 @section('content')
 <div class="content">
-    <h3 id="page-title">F.A.Q (Frequently Asked Questions)</h3>
+    <h3 id="page-title">Frequently Asked Questions</h3>
+
+    <div class="faq">
+    </div>
 </div>
 @endsection
